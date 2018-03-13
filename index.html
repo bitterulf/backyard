@@ -4,10 +4,39 @@
         <script src="pouchdb-6.4.3.min.js"></script>
         <script src="pouchdb.authentication.min.js"></script>
         <script>
-            var db = new PouchDB('http://localhost:3000', {skip_setup: true});
-            db.logIn('batman', 'brucewayne').then(function (batman) {
-              console.log("I'm Batman.");
-              return db.logOut();
+
+            fetch('http://localhost:3000/admin', {
+              method: 'POST',
+              body: JSON.stringify({foo: 'bar'}),
+              headers: new Headers({
+                'Content-Type': 'application/json'
+              })
+            }).then(res => res.json())
+            .catch(error => console.error('Error:', error))
+            .then(response => console.log('Success:', response));
+
+            var db = new PouchDB('http://localhost:3000/data_harry', {
+                skip_setup: true
+            });
+
+            db.logIn('harry', 'dirty').then(function (batman) {
+                console.log("I'm Harry");
+
+                db.get('counter').then(function (doc) {
+                    doc.count++;
+                    db.put(doc);
+                }).catch(function() {
+                    db.put({
+                        "_id": "counter",
+                        "count": 0
+                    });
+                });
+
+                db.allDocs({include_docs: true}, function(err, result) {
+                    console.log(err, result);
+                    return db.logOut();
+                })
+
             });
         </script>
     </head>

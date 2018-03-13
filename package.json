@@ -17,10 +17,13 @@
   },
   "homepage": "https://github.com/bitterulf/backyard#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "express-pouchdb": "^4.0.0",
+    "nano": "^6.4.3",
     "pouchdb": "^6.4.3",
-    "pouchdb-auth": "^4.0.0"
+    "pouchdb-auth": "^4.0.0",
+    "unirest": "^0.5.1"
   }
 }
