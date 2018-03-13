@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>foo</title>
+        <script src="pouchdb-6.4.3.min.js"></script>
+        <script src="pouchdb.authentication.min.js"></script>
+        <script>
+            var db = new PouchDB('http://localhost:3000', {skip_setup: true});
+            db.logIn('batman', 'brucewayne').then(function (batman) {
+              console.log("I'm Batman.");
+              return db.logOut();
+            });
+        </script>
+    </head>
+    <body>
+        bar
+    </body>
+</html>

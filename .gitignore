@@ -3,8 +3,8 @@
 # Example .gitignore files: https://github.com/github/gitignore
 /bower_components/
 /node_modules/
-/pouch__all_dbs__/
 /_users/
 /_replicator/
 /log.txt
 /config.json
+/data/
